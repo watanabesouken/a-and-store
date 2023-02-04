@@ -1,0 +1,14 @@
+
+    {% if customer.metafields.adv_reg.token and shop.metafields.adv_reg.showProfile == 'on' %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.2.1/iframeResizer.min.js"></script>
+    
+    <iframe id="advancedRegForm" onload="iFrameResize({log:false}, '#advancedRegForm')" 
+    src="https://taloncommerce.com/advanced_registration/api/registration_form/?id=5747&form=profile&token={{customer.metafields.adv_reg.token}}" 
+
+     style="min-width: 100%; 
+    margin: 0 auto;padding-top:30px;border:none;  min-height:500px;overflow:hidden;" width="100%" height="100%" allowtransparency="true">
+      <p>Your browser does not support iframes.</p>
+    </iframe>
+    {% endif %}
+
+    

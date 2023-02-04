@@ -1,0 +1,261 @@
+{% style %}
+.hero_search {
+  height: auto;
+  text-align: center;
+  padding: 8rem 2rem;
+}
+
+@media (min-width: 750px) {
+  .hero_search {
+    padding: 8rem;
+  }
+}
+
+.suggest-keywords-feild {
+  margin: 2rem 0;
+}
+
+@media (min-width: 750px) {
+  .suggest-keywords-feild {
+    padding: 2rem 5rem;
+  }
+}
+
+.suggest-keywords {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 750px) {
+  .suggest-keywords {
+    max-width: 60%;
+    margin: auto;
+  }
+}
+
+.suggest-keywords a {
+  text-decoration: none;
+  padding: 0.5rem 1.8rem;
+  border-radius: 3rem;
+   font-size: 1.4rem;
+}
+
+.suggest-keywords a:hover {
+  opacity: .8;
+}
+
+.search-feild .kv_search {
+  color: #fff;
+  width: 6rem;
+  border-radius: 3rem;
+  height: 100%;
+}
+
+@media (min-width: 750px) {
+  .search-feild .kv_search {
+    width: 20%;
+  }
+}
+
+.search-feild .field__input {
+  border-radius: 3rem;
+}
+
+.search-feild .field::after {
+  box-shadow: none;
+}
+
+.search-feild .field:hover.field:after {
+  box-shadow: none;
+}
+
+.search-feild .field__input:focus {
+  box-shadow: none;
+}
+
+.search-feild .field__button > svg {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+@media (min-width: 750px) {
+  .search-kv__form {
+  max-width: 70%;
+    margin: auto;
+  }
+}
+
+.search-contents h2 {
+    color: {{ section.settings.color_heading }};
+}
+.search-contents p {
+    color: {{ section.settings.color_lead }};
+}
+
+.suggest-keywords a {
+    color: {{ section.settings.color_tag }};
+    background: {{ section.settings.color_tagbk }};
+}
+
+.search-feild .kv_search {
+    background-color: {{ section.settings.color_iconbk }};
+}
+
+.search-feild .field__input:focus {
+    border: 2px solid {{ section.settings.color_border }};
+}
+{% endstyle %}
+<div class="hero_search" style="background:  url('{{ section.settings.img | img_url: 'master' }}') no-repeat center center / cover;">
+    <div class="search-contents">
+        <h2>{{ section.settings.header }}</h2>
+        <p>{{ section.settings.lead }}</p>
+
+        <div class="search-feild">
+<!--             <form action="{{ routes.search_url }}" method="get" role="search" class="search search-kv__form">
+                <div class="field">
+                <input class="search__input field__input"
+                    id="Search-In-Modal-1"
+                    type="search"
+                    name="q"
+                    value=""
+                    placeholder="{{ 'general.search.search' | t }}"
+                    {%- if settings.predictive_search_enabled -%}
+                    role="combobox"
+                    aria-expanded="false"
+                    aria-owns="predictive-search-results-list"
+                    aria-controls="predictive-search-results-list"
+                    aria-haspopup="listbox"
+                    aria-autocomplete="list"
+                    autocorrect="off"
+                    autocomplete="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                    {%- endif -%}
+                >
+                <label class="field__label" for="Search-In-Modal-1">{{ 'general.search.search' | t }}</label>
+                <input type="hidden" name="options[prefix]" value="last">
+                <button class="field__button kv_search" aria-label="{{ 'general.search.search' | t }}">
+                    <svg class="icon icon-search" aria-hidden="true" focusable="false" role="presentation">
+                    <use href="#icon-search">
+                    </svg>
+                </button>
+                </div>
+    
+                {%- if settings.predictive_search_enabled -%}
+                <div class="predictive-search predictive-search--header" tabindex="-1" data-predictive-search>
+                    <div class="predictive-search__loading-state">
+                    <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                        <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                    </svg>
+                    </div>
+                </div>
+    
+                <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
+                {%- endif -%}
+            </form> -->
+            <div class="suggest-keywords-feild">
+                <ul class="suggest-keywords">
+                {% for block in section.blocks %}  
+                   <li><a href="../search?q={{ block.settings.word }}">{{ block.settings.word }}</a></li>
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+{% schema %}
+{
+  "name": "サーチwithサジェスト",
+  "tag": "section",
+  "settings": [
+    {
+        "type": "image_picker",
+        "id": "img",
+        "label": "背景画像"
+    },
+    {
+      "type": "text",
+      "id": "header",
+      "label": "タイトル"
+    },
+    {
+        "type": "html",
+        "id": "lead",
+        "label": "リード文"
+    },
+    {
+        "type": "paragraph",
+        "content": "-------テキストカラー-------"
+    },
+    {
+        "type": "color",
+        "id": "color_heading",
+        "label": "タイトルカラー",
+        "default": "#ffffff"
+    },
+    {
+        "type": "color",
+        "id": "color_lead",
+          "label": "リード文カラー",
+        "default": "#ffffff"
+    },
+    {
+        "type": "paragraph",
+        "content": "-------検索窓カラー-------"
+    },
+    {
+        "type": "color",
+        "id": "color_border",
+        "label": "検索窓枠カラー（クリック時）",
+        "default": "#2e3860"
+    },
+    {
+        "type": "color",
+        "id": "color_iconbk",
+        "label": "送信ボタン背景",
+        "default": "#0077d5"
+    },
+    {
+        "type": "paragraph",
+        "content": "-------サジェストカラー-------"
+    },
+    {
+        "type": "color",
+        "id": "color_tag",
+        "label": "キーワード文字カラー",
+        "default": "#ffffff"
+    },
+    {
+        "type": "color",
+        "id": "color_tagbk",
+             "label": "キーワード背景カラー",
+        "default": "#ffd3b3"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "keywords",
+      "type": "select",
+      "settings": [
+        {
+            "type": "text",
+            "id": "word",
+            "label": "キーワード"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "サーチwithサジェスト"
+    }
+  ]
+}
+{% endschema %}

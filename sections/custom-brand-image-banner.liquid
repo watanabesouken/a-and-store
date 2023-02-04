@@ -1,0 +1,203 @@
+
+<div class="custom-brand  custom-brand--{{ section.id }} section-{{ section.id }}-margin">
+    <div class="custom-brand__inner">
+        <div class="custom-brand__text-wrapper custom-brand__text-wrapper--{{ section.id }}">
+            <div class="custom-section__header ">
+                <h2 class="custom-section__heading custom-section__heading--{{ section.id }}">{{ section.settings.brand_title }}</h2>
+                <p class="custom-section__sub-heading">{{ section.settings.brand_caption }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{%- style -%}
+  .section-{{ section.id }}-margin {
+    margin-top: {{ section.settings.sp_margin_top }}px;
+    margin-bottom: {{ section.settings.sp_margin_bottom }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-margin {
+      margin-top: {{ section.settings.margin_top }}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+  }
+
+  .custom-brand__inner{
+    max-width: 1520px;
+    width: 90%;
+    margin: 0 auto;
+  }
+  .custom-brand__logo{
+    margin: 0 auto;
+    width:{{ section.settings.logo_width }}px;
+    height: 100%;
+  }
+  .custom-brand__logo img{
+    width: 100%;
+    vertical-align:bottom;
+  }
+  .custom-brand--{{ section.id }} {
+    padding-top: {{ section.settings.padding }}px;
+    padding-bottom: {{ section.settings.padding }}px;
+  }
+  .custom-brand--{{ section.id }}{
+    background: url( {{ section.settings.image_picker | img_url: 'master'}}) center / cover no-repeat;
+  } 
+  .custom-brand__text-wrapper--{{ section.id }} {
+    width: 100%;
+    text-align: {{ section.settings.text_alignment }};
+  }
+  .custom-brand--{{ section.id }} .custom-section__heading{
+    font-size: {{ section.settings.title_font_size }}px ;
+    color: {{ section.settings.brand_title_color }};
+    font-weight:bold;
+ }
+ .custom-brand--{{ section.id }} .custom-section__sub-heading{
+    color: {{ section.settings.brand_caption_color }};
+ }
+
+
+
+  @media (max-width: 749px) {
+    .custom-brand--{{ section.id }}   {
+      padding-top: 70px;
+      padding-bottom: 70px;
+    }
+    .custom-brand__text-wrapper--{{ section.id }}  {
+      width: 300px;
+    }
+  }
+{%- endstyle -%}
+
+
+{% schema %}
+{
+    "name":"ブランド画像バナー",
+    "tag": "section",
+    "settings":[
+        {
+            "type": "image_picker",
+            "id":"image_picker",
+            "label":"背景画像"
+        },
+        {
+            "type": "range",
+            "id": "padding",
+            "min": 100,
+            "max": 600,
+            "step": 10,
+            "unit": "px",
+            "label": "画像の高さ設定",
+            "default": 400
+        },
+        {
+            "type": "text",
+            "id": "brand_title",
+            "default": "FLIP BOX FAMILY",
+            "label": "タイトル"
+        },
+        {
+            "type": "html",
+            "id": "brand_caption",
+            "default": "簡単なキャプションが入ります。",
+            "label": "キャプション",
+            "info":"改行したい位置に<br>を入れて下さい。"
+        },
+        {
+			"type": "select",
+			"id": "text_alignment",
+			"options": [
+                {
+					"value": "left",
+					"label": "左側"
+				},
+                {
+					"value": "center",
+					"label": "中央"
+				},
+				{
+					"value": "right",
+					"label": "右側"
+				}
+			],
+			"default": "center",
+			"label": "テキストの配置"
+		},
+        {
+            "type": "color",
+            "id": "brand_title_color",
+            "default": "#fff",
+            "label": "タイトルの色"
+        },
+        {
+            "type": "color",
+            "id": "brand_caption_color",
+            "default": "#fff",
+            "label": "キャプションの色"
+        },
+        {
+            "type": "range",
+            "id": "title_font_size",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "px",
+            "label": "タイトルの文字サイズ",
+            "default": 40
+        },
+        {
+            "type": "header",
+            "content": "余白の設定"
+        },
+        {
+            "type": "range",
+            "id": "margin_top",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "PCサイズ:上部の余白",
+            "default": 36
+        },
+        {
+            "type": "range",
+            "id": "margin_bottom",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "PCサイズ:下部の余白",
+            "default": 36
+        },
+        {
+            "type": "range",
+            "id": "sp_margin_top",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "スマホサイズ：上部の余白",
+            "default": 36
+        },
+        {
+            "type": "range",
+            "id": "sp_margin_bottom",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "スマホサイズ：下部の余白",
+            "default": 36
+        }
+    ],
+    "presets": [
+        {
+			"name": "ブランド画像バナー"
+	    }
+    ]
+}
+
+{% endschema %}

@@ -1,0 +1,63 @@
+{% comment %}
+This snippet changes automatically with updates! Any modifications will be overwritten.
+{% endcomment %}
+
+    <!--  advanced registration starts ( https://apps.shopify.com/advanced-registration ) -->
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.2.1/iframeResizer.min.js"></script>
+    {%- form 'customer_login', novalidate: 'novalidate', style:'display:none', id:'adv_reg_login' -%}
+
+{% capture loginErrors %}{% if form.errors %}{% for field in form.errors %}{{form.errors.messages[field]}}|{% endfor %}{% endif %}{% endcapture %}
+
+<input type="hidden" name="form_type" value="customer_login">
+
+ <input  type="email"
+          name="customer[email]"
+          id="CustomerEmail"
+
+        >
+ <input
+            type="password"
+            value=""
+            name="customer[password]"
+            id="CustomerPassword"
+
+          >
+  <input
+            type="hidden"
+            value="/"
+            name="checkout_url"
+            id="CustomerRedirect"
+          >
+
+
+{%- endform -%}
+<div style="position:relative">
+    <iframe id="advancedRegForm" onload="iFrameResize({log:false}, '#advancedRegForm')"
+    src="https://taloncommerce.com/advanced_registration/api/registration_form/?id=5747&loginErrors={{loginErrors| url_encode }}&curUrl={{ canonical_url | url_encode }}"
+
+     style="min-width: 100%;border:none;  min-height:500px;overflow:hidden;" width="100%" height="100%" allowtransparency="true">
+      <p>Your browser does not support iframes.</p>
+    </iframe>
+{% form 'recover_customer_password', style:'display:none', id:'adv_reg_recover' %}
+    <input type="email" value="" name="email" id="RecoverEmail"
+           autocorrect="off" autocapitalize="off">
+
+    <input type="hidden" name="form_type" value="recover_customer_password">
+    {% if form.posted_successfully? %}
+    <script>
+        var iframe = document.getElementById("advancedRegForm").contentWindow;
+        window.setTimeout(function() {
+            iframe.postMessage("afterRecover", "*");
+       },
+       2000);//wait 2 seconds to be sure the iframe which we don't have cross-origin permission to see for has loaded.
+    </script>
+    {% endif %}
+{% endform %}
+
+
+       <script src="https://taloncommerce.com/static/adv_reg/adv_reg_v2.js" ></script>
+
+</div>
+

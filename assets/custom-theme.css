@@ -1,0 +1,1326 @@
+/*****************/
+/*   共通   */
+/*****************/
+
+/*   fontの変更  */
+html , body{
+  font-family: 'Noto Sans JP', sans-serif!important;
+  font-weight: 500!important;
+}
+
+.pagetop{
+  display:none;
+}
+
+.Heading{
+    font-family: 'Noto Sans JP', sans-serif!important;
+    font-weight:500!important;
+}
+
+/*  商品ページの説明文のfontが反映 */
+.Container{
+	  font-family: 'Noto Sans JP', sans-serif!important;
+}
+/*  コレクションページのパンくずとメニュー子要素のfontが反映 */
+a {
+	  font-family:'Noto Sans JP', sans-serif!important;
+}
+
+.Button,
+.shopify-payment-button__button--unbranded,
+input.spr-button-primary,
+.spr-summary-actions-newreview,
+.spr-button-primary:not(input),
+.spr-pagination-prev > a,
+.spr-pagination-next > a {
+    font-family: 'Noto Sans JP', sans-serif!important;
+    font-weight: 500;
+}
+
+.Form__Label,
+.spr-form-label {
+    font-family:  'Noto Sans JP', sans-serif!important;
+    font-weight: 500;
+}
+
+.Select--transparent select {
+    font-family: 'Noto Sans JP', sans-serif!important;
+    font-weight: 500;
+}
+
+.SelectButton {
+    font-family:  'Noto Sans JP', sans-serif!important;
+    font-weight: 500;
+}
+
+.FeaturedMap__Store {
+    font-family: 'Noto Sans JP', sans-serif!important;
+    font-weight: 500;
+}
+
+.shopify-challenge__container .shopify-challenge__button {
+    font-family: 'Noto Sans JP', sans-serif!important;
+    font-weight: 500;
+}
+
+.Pagination {
+    font-family: 'Noto Sans JP', sans-serif!important;
+    font-weight: 500;
+}
+.Rte h1,
+.Rte h2,
+.Rte h3,
+.Rte h4,
+.Rte h5,
+.Rte h6 {
+    font-family: 'Noto Sans JP', sans-serif!important;
+    font-weight: 500;
+}
+.Table th,
+.Rte table th {
+    font-family:  'Noto Sans JP', sans-serif!important;
+    font-weight: 500;
+}
+#shopify-product-reviews .spr-review-header-title {
+    font-family: 'Noto Sans CJK JP', sans-serif;
+    font-weight: 500;
+}
+.Timeline__Nav {
+    font-family:  'Noto Sans JP', sans-serif!important;
+    font-weight: 500;
+}
+
+
+/*   表示・非表示きりかえ  */
+.custom-pc-only{
+    display:none;
+}
+.custom-sp-only{
+    display:inline-block;
+}
+
+.custom-sp-only2{
+    display:inline-block;
+}
+
+/* 検索結果スタイル整え */
+.custom-Search__Results .Grid{
+  margin-left:0;
+}
+
+.custom-Search__Results .Grid__Cell{
+  padding-left:0;
+}
+
+@media screen and (max-width: 640px) {
+  .custom-Search__Results .ProductItem__Info:before{
+      display:none;
+  }
+}
+
+/*   表示・非表示きりかえ jsトリガー用  */
+.show-control{
+    display: none !important;
+    opacity: 0;
+  }
+.show-control2{
+    visibility: hidden !important;
+}
+
+@media screen and (min-width: 750px) {
+    .custom-pc-only{
+        display:block;
+    }
+}
+@media screen and (min-width: 1008px) {
+    .custom-sp-only{
+        display:none;
+    }
+}
+@media screen and (min-width: 1140px) {
+    .custom-sp-only2{
+        display:none;
+    }
+}
+
+/*****************/
+/*   背景のグリッド線の設定  */
+/*****************/
+
+section{
+    border-right: 1px solid var(--custom-color);
+    border-left: 1px solid var(--custom-color);
+}
+.PageContainer{
+    padding: 0 20px;
+}
+
+@media screen and (min-width: 750px) {
+    .PageContainer{
+        padding: 0 50px;
+    }
+}
+/* アナウンスバー */
+#shopify-section-announcement{
+    /* 位置固定 */
+    position: sticky;
+    width: 100%;
+    top: 0;
+    z-index: 30;
+}
+
+#shopify-section-announcement::after{
+    content:"";
+    display:block;
+    width:100vw;
+    height:1px;
+    background-color:var(--custom-color);/* カスタマイズ画面のcustom-colorから変更可能 */
+    position:absolute;
+    bottom:0;
+    left:-20px;
+}
+
+@media screen and (min-width: 750px) {
+    #shopify-section-announcement::after{
+        left:-50px;
+    }
+}
+
+
+#section-announcement{
+    border-right: 1px solid var(--custom-color);
+    border-left: 1px solid var(--custom-color);
+}
+
+/* 編集　文字折返し 防ぐため*/
+.AnnouncementBar__Wrapper {
+    padding: 12px 8px;
+}
+.features--heading-uppercase .Heading {
+    font-size: 10px;
+}
+
+@media screen and (min-width: 750px) {
+    .features--heading-uppercase .Heading {
+        font-size: 12px;
+    }
+  span.ProductItem__Label.ProductItem__Label--soldOut.Heading.Text--subdued {
+    font-weight: bold!important;
+}
+  .ProductItem__LabelList.custom-label-red span {
+    font-weight: bold!important;
+}
+}
+
+/* ヘッダー */
+.shopify-section--header{
+    /* 位置固定 */
+    top: 40px;
+}
+
+.shopify-section--header::after{
+    content:"";
+    display:block;
+    width:100vw;
+    height:1px;
+    background-color:var(--custom-color);
+    position:absolute;
+    bottom:0;
+    left:-20px;
+}
+
+@media screen and (min-width: 750px) {
+    .shopify-section--header::after{
+        left:-50px;
+    }
+}
+
+
+.Header__Wrapper{
+    border-right: 1px solid var(--custom-color);
+    border-left: 1px solid var(--custom-color);
+    padding: 15px 8px;
+}
+
+
+/*  メインビュー */
+.wapper_img{
+    position: relative;
+    height:100vh;
+}
+
+.wapper_img .slider{
+    height:inherit;
+}
+
+.wapper_img .slider__inner{
+    height:inherit;
+}
+
+.wapper_img::after{
+    content:"";
+    display:block;
+    width:100vw;
+    height:1px;
+    background-color:var(--custom-color);
+    position:absolute;
+    bottom:0;
+    left:-20px;
+}
+
+@media screen and (min-width: 750px) {
+    .wapper_img::after{
+        left:-50px;
+    }
+}
+
+/*  ブランドバナー */
+
+#shopify-section-template--17301449507124__cd05fa11-24b6-4619-b6fe-33760d80f1d5 {
+    margin-top: -1px;
+}
+
+.custom-brand__bg-image{
+    position: relative;
+}
+.custom-brand__bg-image::before{
+    content:"";
+    display:block;
+    width:100vw;
+    height:1px;
+    background-color:var(--custom-color);
+    position:absolute;
+    top:0;
+    left:-20px;
+}
+.custom-brand__bg-image::after{
+    content:"";
+    display:block;
+    width:100vw;
+    height:1px;
+    background-color:var(--custom-color);
+    position:absolute;
+    bottom:0;
+    left:-20px;
+}
+
+.custom-brand-image-banner__title{
+    margin-bottom: 5px;
+    font-weight: 700 !important;
+}
+
+.custom-brand-image-banner__title {
+  line-height: 1.2;
+}
+
+@media screen and (min-width: 750px) {
+    .custom-brand__bg-image::before{
+        left:-50px;
+    }  
+    .custom-brand__bg-image::after{
+        left:-50px;
+    }
+    .custom-brand-image-banner__title br {
+        display: none;
+  }
+}
+
+/* ページヘッダー  コレクション、コンタクトに共通するCSS*/
+.PageHeader {
+    margin-top: 0;
+    margin-bottom: -15px;
+}
+.PageHeader .Container{
+    padding: 10px 8px 0 8px;
+}
+.PageHeader .SectionHeader__Heading{
+    font-size: 14px !important;
+}
+
+.SectionHeader--center{
+    text-align: left;
+}
+
+@media screen and (min-width: 750px) {
+    .PageHeader {
+        margin-top: 0;
+        margin-bottom: -30px;
+    }
+    .PageHeader .Container{
+        padding: 16px 16px 0 16px;
+    }
+    .PageHeader .SectionHeader__Heading{
+        font-size: 20px !important;
+    }
+}
+
+/* ブランドトップページ*/
+
+/* ブランドバナー　テキスト　*/
+.shopify-section--slideshow .SectionHeader__SubHeading{
+    font-size: 14px;
+}
+
+/* メニュー　フォントサイズ　*/
+#section-header-custom .HorizontalList__Item .Heading{
+    font-size: 14px;
+}
+
+@media screen and (min-width: 750px) {
+    .shopify-section--slideshow .SectionHeader__SubHeading{
+        font-size: 22px;
+    }
+}
+
+
+
+/* 商品カード */
+.Grid__Cell{
+/*     border: 1px solid var(--custom-color); */
+    border-bottom:1px solid var(--custom-color);
+}
+
+.AspectRatio{
+    /* border-bottom: 1px solid var(--custom-color); */
+}
+
+.ProductList{
+    position: relative;
+}
+
+.ProductItem__Info{
+    margin-bottom: 10px;
+    position: relative;
+    height: 45px;/*　モバイルサイズで商品タイトルや料金が折り返されてもグリッド線の位置を崩さないため */
+}
+
+/* コレクションページのグリッド線 */
+.custom-CollectionMain{
+  	margin-bottom:-60px;
+}
+
+@media screen and (min-width: 641px) {
+  .custom-CollectionMain{
+  	margin-bottom:0px;
+  }
+}
+
+
+
+/* 商品タイトル上のグリッド線 */
+.ProductItem__Info::before{
+    content:"";
+    display:block;
+    width:100%;
+    height:1px;
+    background-color:var(--custom-color);
+    position:absolute;
+    top:-10px;
+    left: 0;
+}
+
+.custom-Grid-margin:not(:last-of-type){
+    margin-bottom: 0;
+}
+
+/*     1/20日 商品画像の上の線が見えない */
+.ProductList::before{
+    content:"";
+    display:block;
+    width:100vw;
+    height:1px;
+    background-color:var(--custom-color);
+    position:absolute;
+    top:0;
+    left:-20px;
+    z-index:2;
+}
+
+.ProductList::after{
+/*     content:"";
+    display:block;
+    width:100vw;
+    height:1px;
+    background-color:var(--custom-color);
+    position:absolute;
+    bottom:0;
+    left:-50px; */
+}
+
+.QuantitySelector{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ProductItem__Info .ProductItem__Title{
+    font-size: 10px;
+}
+
+@media screen and (min-width: 641px) {
+    .ProductList--grid > .Grid__Cell:last-child{
+/*   margin-bottom: 50px; */
+    }
+}
+@media screen and (min-width: 750px) {
+    .ProductList::before{
+        left:-50px;
+    }
+    .ProductItem__Info{
+        margin-bottom: 40px;
+        height: initial;
+    }
+    .ProductItem__Info::before{
+        top: -20px;
+    }
+    .ProductItem__Info .ProductItem__Title{
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .\31\/4--desk, .\33\/12--desk{
+        width: 25%;
+    }
+}
+
+
+/* フッター */
+.Footer{
+    position: relative;
+    border-right: 1px solid var(--custom-color);
+    border-left: 1px solid var(--custom-color);
+}
+.Footer::before{
+    content:"";
+    display:block;
+    width:100vw;
+    height:1px;
+    background-color:var(--custom-color);
+    position:absolute;
+    top:0px;
+    left:-20px;
+}
+.Footer::after{
+    content:"";
+    display:block;
+    width:100vw;
+    height:1px;
+    background-color:var(--custom-color);
+    position:absolute;
+    bottom:20px;
+    left:-20px;
+}
+.Footer__Title{
+    display: none;
+}
+.Footer__Block--links{
+    text-align: center;
+}
+
+.custom-logo__wrapper{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  align-items: center;
+    margin-bottom: 120px;
+}
+
+.custom-logo__link{
+    display: inline-block;
+}
+
+.custom-logo__link:first-of-type{
+    margin-bottom: 24px;
+}
+
+.Link--primary{
+    font-size: 10px;
+}
+
+.custom-sns__footer{
+    margin-bottom: 30px;
+}
+
+.Footer__Block {
+    margin-bottom: 97px;
+}
+
+.custom-sns__footer .Icon{
+    width: 2.0em;
+    height: 2.0em;
+}
+
+@media screen and (min-width: 750px){
+    .Footer::before{
+        content:"";
+        display:block;
+        width:100vw;
+        height:1px;
+        background-color:var(--custom-color);
+        position:absolute;
+        top:0px;
+        left:-50px;
+    }
+    .Footer::after{
+        content:"";
+        display:block;
+        width:100vw;
+        height:1px;
+        background-color:var(--custom-color);
+        position:absolute;
+        bottom:50px;
+        left:-50px;
+    }
+    .Footer__Block {
+        margin-bottom: 88px;
+    }
+    .custom-logo__wrapper{
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        margin-bottom: 57px;
+    }
+    .custom-logo__link:first-of-type{
+/*         margin-right: 32px; */
+        margin-bottom: 0;
+    }
+
+    .Link--primary{
+        font-size: 12px;
+    }
+}
+
+/*****************/
+/*  ヘッダーのカスタマイズ   */
+/* 　theme.cssの上書き */
+/*****************/
+
+/* 　ヘッダー　背景透過　80％ */
+.custom-Header--transparent{
+    background-color: rgba(255,255,255, 0.8);
+}
+
+.DropdownMenu{
+    background-color: rgba(255,255,255, 1);
+}
+
+/* 　サイドバー　ボックスシャドー消す */
+#shopify-section-sidebar-menu .Drawer::before{
+    box-shadow: none;
+}
+
+#shopify-section-header-custom .DropdownMenu::before{
+    display: none;
+}
+
+/* 　サイドバー位置調整 */
+.SidebarMenu{
+    margin-top: 110px;
+}
+
+.SidebarMenu__Nav .Collapsible__Button{
+    padding: 10px 0;
+}
+
+/* 　サイドバーメニュー　フォントサイズ */
+.SidebarMenu__Nav .custom-font-size{
+    font-size: 12px;
+}
+
+/* snsアイコン表示　*/
+.custom-Linklist li{
+    text-align: left;
+}
+
+.SidebarMenu .Drawer__Main{
+    flex: 0 auto;
+}
+
+.SidebarMenu__Social .HorizontalList__Item:first-of-type{
+    margin-right: 16px;
+    margin-left: 16px;
+}
+
+.SidebarMenu__Social .Icon{
+    width: 2.0em;
+    height: 2.0em;
+}
+
+@media screen and (min-width: 641px) {
+    .SidebarMenu{
+        margin-top: 150px;
+    }
+}
+@media screen and (min-width: 750px) {
+    .SidebarMenu{
+        margin-top: 153px;
+    }
+}
+
+/* 　ヘッダー　ロゴ、アイコンの配置調整 */
+
+.Header__FlexItem.Header__FlexItem--logo {
+    order: -2;
+}
+.Header__FlexItem--blandlogo{
+    order: -1;
+    margin-left: calc(50% - 60px);
+}
+
+.Header__MainNav .DropdownMenu{
+    left: 0;
+    width: 100vw;
+    max-width: 100%;
+}
+
+/* 追加修正（メガメニュー） */
+.Header__MainNav .Linklist{
+    justify-content: center;
+      gap: 35px;
+}
+
+.Header__MainNav .Linklist__Item{
+    margin-bottom: 0;
+    text-align: center;
+      width: 100%;
+    padding: 0;
+}
+.DropdownMenu .Link {
+    padding-left: 0px;
+      padding-right: 0px;
+}
+.Header__MainNav .DropdownMenu .Link{
+   padding-right: 0px;
+}
+/* .Header__MainNav .DropdownMenu .Link{
+    padding-right: 20px;
+} */
+
+
+@media screen and (min-width: 1140px){
+    .Header--logoLeft .Header__FlexItem--logo {
+        margin-right: 38px;
+    }
+    .Header--logoLeft .Header__FlexItem--fill:last-child{
+        flex: auto;
+    }
+}
+@media screen and (min-width: 640px){
+    .Header__FlexItem--blandlogo{
+        margin-left: calc(50% - 80px);
+    }
+}
+/* 編集　ヘッダー　サイドバー展開時も表示するため、z-index大きく*/
+.shopify-section--header {
+    z-index: 30;
+  }
+
+/* 商品ページレイアウト変更1.20 */
+.shopify-section .Product{
+    position: relative;
+	  margin-right:0;
+	  margin-leftt:0;
+        max-width: 2500px;
+}
+
+.Product__Wrapper{
+	width:100%;
+}
+
+.Product__InfoWrapper{
+	width:100%; 
+}
+
+@media screen and (min-width: 1008px) {
+	.Product__Wrapper{
+		width:50%;
+	}
+	.Product__InfoWrapper{
+		width:50%;
+	}
+   .custom-Product__Gallery{
+     margin-left: 0;
+  }
+  .Product__Info{
+			width:80%;
+	}
+   .Product__Info, Product__Aside{
+			max-width:100%;
+	}
+}
+
+@media screen and (min-width: 1600px) {
+	.shopify-section .Product{
+    	margin-right:auto;
+    	margin-leftt:auto;
+    }
+}
+
+/* 01/12 追加　ここまで */
+
+/* 　ハンバーガーメニューの位置調整 */
+.Header__FlexItem.Header__FlexItem--fill:first-child {
+    justify-content: flex-end;
+    width: 30px;
+    flex: initial;
+}
+
+@media screen and (min-width: 640px){
+    .Header__FlexItem.Header__FlexItem--fill:first-child {
+        width: 50px;
+    }
+}
+
+.Header__FlexItem--fill:last-child {
+    justify-content: flex-end;
+    order: -1;
+}
+
+/* ハンバーガーのDrawerの幅をヘッダーに揃える。 */
+.customs-Drawer{
+    width: calc(100vw - 40px); /* Interestingly, 100% does not work on iOS 9 and lower */
+    margin-left: 20px;
+}
+@media screen and (min-width: 750px) {
+    .customs-Drawer{
+        width: calc(100vw - 100px);
+        margin-left: 50px;
+    }
+}
+
+/* 　ハンバーガー開閉時のアニメーション　追加　 */
+.custom-Drawer__Close{
+    right: 0;
+    top: calc(50% - 72px);
+    width: 35px;
+} 
+
+@media screen and (min-width: 641px) {
+    .custom-Drawer__Close{
+        right: 0;
+        top: calc(50% - 104px);
+        background-color: #EBEBEB;
+    }
+}
+@media screen and (min-width: 750px) {
+    .custom-Drawer__Close{
+        right: 0;
+        top: calc(50% - 104px);
+    }
+}
+
+
+
+/* 　ハンバーガー開閉時のアニメーション　追加　 */
+
+.custom-Drawer--animation{
+    animation-name:fadeInAnime;
+    animation-duration:0.5s;
+    animation-fill-mode:forwards;
+}
+.custom-Drawer--animation .Drawer__Container {
+    padding-left: 18px;
+    padding-right: 24px;
+}
+
+.custom-Drawer--animation.Drawer__Container,
+.Drawer--fromRight .Drawer__Container {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+@keyframes fadeInAnime{
+    /* from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 0.9;
+    } */
+}
+
+
+
+/*****************/
+/*  商品ラベル　の設定（　SaleとSold　）   */
+/* 　theme.cssの上書き */
+/*****************/
+
+.ProductList--grid {
+    padding: 0;
+  }
+
+.ProductList--grid > .Grid__Cell{
+    padding-left: 0;
+    /* margin-bottom: 0; */
+}
+
+.ProductItem__LabelList{
+    top: 0;
+    left: 0;
+    margin: 0;
+}
+
+.custom-label-red{
+    border-top: solid 46px #FF0000;
+    border-right: solid 46px transparent;
+}
+.custom-label-black{
+    border-top: solid 46px black;
+    border-right: solid 46px transparent;
+}
+
+.ProductItem__Label{
+    text-transform: capitalize !important;
+    color: white;
+    background-color: transparent;
+    padding: 2px 3px;
+    position: absolute;
+    top: -44px;
+    left: 0;
+    font-size:10px;
+    letter-spacing: 0.1em !important;
+}
+
+@media screen and (max-width: 640px) {
+    .ProductList--grid {
+      margin-left: 0;
+    }
+}
+
+@media screen and (min-width: 641px) {
+    .ProductList--grid > .Grid__Cell{
+        padding-left: 0;
+        margin-bottom: 0;
+    }
+    .ProductList--grid {
+        margin-left: 0;
+    }
+}
+
+@media screen and (min-width: 750px) {
+    .custom-label-red{
+        border-top: solid 70px #FF0000;
+        border-right: solid 70px transparent;
+    }
+    .custom-label-black{
+        border-top: solid 70px black;
+        border-right: solid 70px transparent;
+    }
+    .ProductItem__Label{
+        top: -60px;
+        left: 0;
+        font-size:14px;
+    }
+}
+@media screen and (min-width: 1140px) {
+    .ProductList--grid[data-desktop-count="4"] > .Grid__Cell,
+    .ProductList--grid[data-desktop-count="3"] > .Grid__Cell{
+        padding-left: 0;
+        margin-bottom: 0;
+    }
+    .ProductList--grid[data-desktop-count="3"] {
+        margin-left: 0;
+      }
+}
+
+/*****************/
+/*  商品詳細ページ */
+/*****************/
+
+/* 商品ページのレイアウト調整 */
+
+#shopify-section-template--17301449965876__main{
+    border-left: 1px solid var(--custom-color);
+    border-right: 1px solid var(--custom-color);
+    position: relative;
+}
+#shopify-section-template--17301449965876__main::after{
+    content:"";
+    display:block;
+    width:100vw;
+    height:1px;
+    background-color:var(--custom-color);
+    position:absolute;
+    bottom:0;
+    left:-20px;
+}
+
+#shopify-section-template--17301449965876__main section{
+    border-left: none;
+    border-right: none;
+}
+
+.custom-Product__Gallery{
+    margin-top: 0;
+}
+
+.Product__InfoWrapper{
+    margin-top: 40px;
+}
+
+.Product__Slideshow{
+    position: relative;
+}
+
+.Product__Slideshow::after{
+    content:"";
+    display:block;
+    width:100vw;
+    height:1px;
+    background-color:var(--custom-color);
+    position:absolute;
+    bottom:0;
+    left:-20px;
+}
+
+.Product{
+    position: relative;
+    margin: 0 auto 50px auto;
+    max-width: 1200px;
+    /* margin: 0 auto 0 auto; */
+    /* max-width: 1500px; */
+}
+
+ .ProductMeta__Description{
+    margin-bottom: 38px;
+    font-size: 10px;
+}
+
+.ProductItem__Info .ProductItem__PriceList{
+    font-size: 10px;
+    /* font-weight: 700 !important; */
+}
+
+.Product .Product__Gallery{
+    margin-bottom: 0;
+}
+@media screen and (min-width: 750px) {
+    #shopify-section-template--17290770121012__main::after{
+        left: -50px;
+    }
+    .Product__Slideshow::after{
+        left: -50px;
+    }
+    .ProductMeta__Description{
+        margin-bottom: 22px;
+        font-size: 14px;
+    }
+    .ProductItem__Info .ProductItem__PriceList{
+        font-size: 14px;
+        /* font-weight: 500 !important; */
+    }
+}
+
+
+@media screen and (min-width: 1008px) {
+    .Product__Wrapper{
+        border-right: 1px solid var(--custom-color);
+    }
+    .Product__Slideshow::after{
+        display:none;
+    }
+}
+
+.Product__InfoWrapper .ProductMeta__Price{
+    font-size: 24px;
+}
+
+/* 商品タイトルのスタイル　追加 */
+.custom-ProductMeta__Title{
+    font-size: 14px !important;
+    position: relative;
+    padding-left: 6px;
+}
+
+.custom-ProductMeta__Title::after{
+    content:"";
+    display:block;
+    width:100vw;
+    height:1px;
+    background-color:var(--custom-color);
+    position:absolute;
+    bottom:0;
+    left:-20px;
+}
+/* 値段左寄せ */
+.ProductMeta__PriceList{
+    text-align: left;
+}
+/* 2枚目以降の画像中央寄せ */
+.custom-product-images{
+    text-align: center;
+}
+.Product__InfoWrapper .ProductForm__Item{
+    text-align: center;
+}
+
+/* カートに追加ボタン下の情報　追加 */
+.custom-product-information{
+    margin-top: 30px;
+    margin-bottom: 76px;
+    font-size: 10px;
+}
+.custom-product-information__description{
+    margin-top: 18px;
+    margin-bottom: 24px;
+    line-height: 1.857;
+}
+.custom-product-information__shipping{
+    display: block;
+    text-decoration: underline;
+    margin-bottom: 5px;
+}
+.custom-product-information__guide{
+    display: block;
+    text-decoration: underline;
+}
+/* 商品画像スライダーを非表示 */
+.Product__SlideshowMobileNav{
+    display: none;
+}
+/* 既存の商品名を非表示 */
+.Product .ProductMeta__Title{
+    display: none;
+}
+
+.ProductMeta__Text{
+    font-size: 10px;
+}
+@media screen and (min-width: 750px) {
+    .custom-product-information{
+        margin-top: 90px;
+        font-size: 14px;
+    }
+    .custom-product-information__shipping{
+        margin-bottom: 8px;
+    }
+    .custom-ProductMeta__Title{
+        font-size: 20px !important;
+        margin-bottom: 0;
+        padding-left: 16px;
+    }
+    .Product__InfoWrapper .ProductMeta__Price{
+        font-size: 28px;
+    }
+    .ProductMeta__Text{
+        font-size: 14px;
+    }
+}
+
+/*　関連商品  */
+
+.custom-ProductRecommendations{
+    margin-top: -50px !important;
+    padding-bottom: 50px !important;
+    padding-top: 0 !important;
+}
+
+.custom-ProductContainer{
+    padding: 7px;
+}
+
+.custom-ProductRecommendations .custom-ProductSectionHeader{
+    margin-bottom: 12px;
+    padding-top: 15px;
+}
+.ProductRecommendations .ProductItem{
+    visibility: visible !important;
+}
+
+.custom-ProductRecommendations__Heading{
+    font-size: 10px !important;
+}
+.ProductRecommendations .AspectRatio{
+    max-width: 393px !important;
+}
+
+@media screen and (max-width: 640px) {
+  .custom-ProductRecommendations{
+    padding-bottom: 0 !important;
+  }
+}
+
+@media screen and (min-width: 750px) {
+    .custom-ProductRecommendations{
+/*         padding-bottom: 80px !important; */
+        padding-top: 0 !important;
+    }
+    .custom-ProductRecommendations__Heading{
+        font-size: 16px !important;
+    }
+    .custom-ProductContainer{
+        padding: 11px;
+    }
+    .custom-ProductMeta__Title::after{
+        left: -50px;
+    }
+}
+@media screen and (min-width: 1300px) {
+    .custom-ProductMeta__Title::after{
+/*         left: calc((100vw - 1200px) / 2 * -1); */
+    }
+}
+
+@media screen and (min-width: 1008px) {
+    .custom-ProductSectionHeader{
+    }
+}
+
+/*****************/
+/*  言語選択　非表示   */
+/*****************/
+.ht-tms--float{
+    display: none;
+}
+
+/*****************/
+/*  コレクションフィルター　非表示   */
+/*****************/
+.CollectionToolbar{
+    display: none;
+}
+
+.CollectionInner__Sidebar{
+    display: none;
+}
+
+
+/*  割引前価格の表示設定   */
+.Price--compareAt{
+  color:#222222;
+  font-size:10px;
+  transform: scale(0.8);
+  transform-origin: left;
+}
+
+@media screen and (min-width: 750px) {
+  .Price--compareAt{
+    font-size:10px;
+    transform: scale(1);
+  }
+}
+/*  パンくずスト   */
+.SectionHeader__Heading:hover {
+    opacity: 0.8;
+}
+
+/* 横揺れ */
+body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch!important;
+}
+
+/* 商品カード */
+.Grid__Cell{
+       border-bottom:1px solid var(--custom-color);
+}
+.Grid__Cell:not(:nth-child(2n)){
+		border-right: 1px solid var(--custom-color);
+}
+/* 商品カード  コレクションページ*/
+.custom-CollectionMain .Grid__Cell:last-child{
+  border-bottom:1px solid var(--custom-color);
+}
+
+.custom-CollectionMain .Grid__Cell:nth-last-child(2){
+  border-bottom:1px solid var(--custom-color);
+}
+.custom-CollectionMain .Grid__Cell:nth-last-child(3){
+  border-bottom:1px solid var(--custom-color);
+}
+
+@media screen and (min-width: 640px) {
+  .custom-CollectionMain .Grid__Cell:not(:nth-child(2n)){
+		border-right:none;
+  }
+   .custom-CollectionMain .Grid__Cell:not(:nth-child(3n)){
+		border-right:1px solid var(--custom-color);
+  }
+}
+
+@media screen and (min-width: 1008px) {
+  .Grid__Cell:not(:nth-child(2n)){
+		border-right: none;
+  }
+  .Grid__Cell:not(:nth-child(3n)){
+		border-right:1px solid var(--custom-color);
+  }
+}
+
+/* 商品カード  コレクションページ*/
+@media screen and (min-width: 1440px) {
+  .custom-CollectionMain .Grid__Cell:not(:nth-child(3n)){
+		border-right:none;
+  }
+  .custom-CollectionMain .Grid__Cell:not(:nth-child(4n)){
+		border-right:1px solid var(--custom-color);
+  }
+  
+}
+
+/*   横揺れ対策  */
+.custom-noscroll{
+  overflow-x: hidden;
+}
+
+/* NEW ARRIVAL　*/
+
+div#shopify-section-template--17332312998186__44e1e5f5-8c39-40b9-a1fd-df144e77ccb1 .Section--spacingNormal {
+    padding: 17px 0 0px;
+}
+
+@media screen and (min-width: 750px) {
+.shopify-section--bordered>.Section--spacingNormal {
+    padding: 50px 0;
+}
+div#shopify-section-template--17332312998186__44e1e5f5-8c39-40b9-a1fd-df144e77ccb1 .Section--spacingNormal {
+         padding: 50px 0;
+}
+}
+
+/* 追加コード */
+@media screen and (min-width: 1140px) {
+  .Linklist__Item:hover::after{
+    position: absolute;
+    content: "";
+    bottom: 0;
+       left: 0;
+    width: 100%;
+    border-bottom: 1px solid black;
+  }
+  .SectionHeader {
+    margin-bottom: 25px !important;
+}
+}
+
+.HorizontalList__Item:hover{
+  border-bottom:1px solid black;
+  margin-bottom:-1px; /* 0117追加　メニューの縦揺れ防止　*/
+}
+
+.Header__LinkSpacer::after{
+  display:none;
+}
+
+/* 既存編集箇所 */
+.Header__MainNav .Linklist__Item {
+    margin-bottom: 0;
+    width: 100px;
+    text-align: center;
+}
+.AspectRatio{
+	max-width:100% !important;
+}
+.ProductItem__Info{
+	margin-top: 10px;
+}
+
+@media screen and (min-width: 750px) {
+	.ProductItem__Info{
+		margin-top: 20px;
+	}
+}
+

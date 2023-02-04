@@ -1,0 +1,310 @@
+  {%- style -%}
+        .swiper-pagination-bullet {
+  width: 12px;
+    height: 12px;
+    display: inline-block;
+    border-radius: 100%;
+    background: #000;
+    opacity: 0.2;
+    margin-right: 6px;
+    margin-top: 20px;
+}
+    .swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #106b2d!important;
+}
+    .swiper-pagination {
+    position: absolute;
+    text-align: center;
+    -webkit-transition: 300ms opacity;
+    -o-transition: 300ms opacity;
+    transition: 300ms opacity;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    z-index: 10;
+    left: 50%;
+}
+ @media screen and (max-width: 520px) {
+ .swiper-pagination {
+    position: absolute;
+    text-align: center;
+    -webkit-transition: 300ms opacity;
+    -o-transition: 300ms opacity;
+    transition: 300ms opacity;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    z-index: 10;
+   left: 46%;
+}
+ .swiper-pagination-bullet {
+  width: 10px;
+    height: 10px;
+    display: inline-block;
+    border-radius: 100%;
+/*     opacity: 0.2; */
+    margin-right: 6px;
+    margin-top: 18px;
+}
+                
+              }
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.swiper-slide .top-slider {
+    height: 70rem;
+}
+
+.swiper-container {
+    width: 100%!important;
+    margin-right: inherit!important;
+    height: 740px;
+    width: 86vw;
+    border-radius: 0 0 0 64px;
+      margin-top: 0;
+}
+    
+    .swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-transition-property: -webkit-transform;
+    transition-property: -webkit-transform;
+    -o-transition-property: transform;
+    transition-property: transform;
+    transition-property: transform, -webkit-transform;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    margin-top: 0;
+}
+      @media screen and (max-width: 1024px) {
+        .swiper-container {
+    width: 100%;
+    margin-right: unset!important;
+     height: 680px;
+    width: 86vw;
+    border-radius: 0 0 0 64px;
+}
+      }
+          @media screen and (max-width: 520px) {
+        .swiper-container {
+    width: 100%;
+margin-right: unset!important;
+    height: 460px;
+    width: 100vw;
+    border-radius: 0 0 0 64px;
+}
+      }
+    
+    .top-slide-catch {
+    width: 100vw;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.2));
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 0 0 0 48px;
+    }
+    
+        .swiper-slide {
+            background-repeat: no-repeat!important;
+            background-size: cover!important;
+              width: 100%;
+            background-position: center!important;
+          background-color: rgba(255, 255, 255, 0.5)!important; 
+        }
+    li {
+      list-style:none;
+    }
+/*            .swiper-wrapper li:not(.swiper-slide-active) {
+             opacity:0!important;
+           }
+     .swiper-wrapper li:not(.swiper-slide-active) .p-inner{
+             opacity:0!important;
+           } */
+            .p-inner {
+                position: absolute;
+              bottom: calc(0% + 80px);
+                left: 6vw;
+                color: #ffffff;
+                font-size: 20px;
+                font-weight: bold;
+             opacity: 0;
+            }         
+            .swiper-slide h2 {
+                margin-top: 8px;
+                color: #ffffff;
+                font-weight:bold;
+                font-size: 44px;
+/*                  text-shadow: 0 0 20px #000; */
+            }
+    .p-top-button__link {
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    background-color: green;
+    width: 100%;
+    text-align: center;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size:20px;
+}
+    .c-btn.circle {
+      max-width: 34rem;
+/* background: #fff; */
+      border: 1px solid #fff;
+          background: transparent;
+/*     color: #116A20; */
+        color: #fff;
+  overflow: hidden;
+  position: relative;
+  transition-duration: .4s;
+  z-index: 2;
+}
+.c-btn.circle::after {
+  background: #116A20;
+  border-radius: 50%;
+  content: "";
+  display: block;
+  margin: auto;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding-top: 100%;
+  height: 0;
+  z-index: -1;
+  transform: translateY(-50%) scale(0.1);
+  transition: opacity .5s, transform 0s;
+  transition-delay: 0s, .4s;
+}
+ 
+.c-btn.circle:hover {
+  color: #fff;
+  border: 1px solid #116A20;
+}
+.c-btn.circle:hover::after {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+  transition-delay: 0s;
+  transition: opacity .8s, transform .6s ease-in-out;
+}
+    
+    @media screen and (max-width: 1024px) {
+          .p-inner {
+              bottom: calc(0% + 40px);
+               left: 7vw;
+            }
+    .p-top-button__link {
+
+    border-radius: 5px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size:15px;
+}
+         .swiper-slide h2 {
+                font-size: 32px;
+            }
+    }
+        .swiper-slide-active .p-inner {
+                animation-name: fade-in;
+                animation-duration: 2s;
+                animation-delay: 1.5s;
+                animation-fill-mode: both;
+               opacity: 1;
+            }
+
+{%- endstyle -%}
+  
+<div class="swiper-container">
+     <ul class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <li class="swiper-slide" style="background: url('{{ block.settings.slide_image1 | img_url: 'master' }}') ">
+              <div class="top-slide-catch">
+               <div class="p-inner">
+                 <p>{{ block.settings.slide_heading }}</p>
+                 <h2>{{ block.settings.slide_text1 }}<br>{{ block.settings.slide_text2 }}</h2>
+                 {%- if block.settings.slide_link-text != blank -%}
+                 <a class="p-top-button__link c-btn circle" href="{{ block.settings.button_link }}"><span>{{ block.settings.slide_link-text }}</span></a>
+                    {%- endif -%}
+               </div>
+                </div>
+            </li>
+          {% endfor %}
+        </ul>
+       
+</div>
+ <div class="swiper-pagination"></div>
+
+
+{% schema %}
+  {
+    "name": "カスタムスライド",
+	"class": "custom-swiper",
+	"settings": [
+	],
+  	"max_blocks": 7,
+    "blocks": [
+       {
+         "name": "スライド",
+         "type": "slide",
+		 "limit": 7,
+         "settings": [
+           {
+             "type": "image_picker",
+             "id": "slide_image1",
+             "label": "スライド画像"
+           },
+           {
+             "type": "text",
+             "id": "slide_heading",
+             "label": "スライド見出し"
+           },
+           {
+             "type": "text",
+             "id": "slide_text1",
+             "label": "スライドテキスト1"
+           },
+           {
+             "type": "text",
+             "id": "slide_text2",
+             "label": "スライドテキスト2"
+           },
+           {
+          "type": "url",
+          "id": "button_link",
+          "label": "ボタンリンク"
+        },
+           {
+             "type": "text",
+             "id": "slide_link-text",
+             "label": "リンクテキスト"
+           }
+         ]
+       }
+     ],
+	"presets": [
+		{
+			"name": "カスタムスライド"
+		}
+	]
+  }
+{% endschema %}

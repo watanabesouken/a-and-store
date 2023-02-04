@@ -1,0 +1,198 @@
+<div class="Container">
+  <header class="PageHeader">
+    <div class="SectionHeader SectionHeader--center">
+      <h1 class="SectionHeader__Heading Heading u-h1">{{ page.title }}</h1>
+    </div>
+  </header>
+
+  <div class="PageContent PageContent--narrow">
+    <div class="Rte">
+      {{- page.content -}}
+
+      {%- form 'contact', class: 'Form Form--spacingTight' -%}
+        {%- if form.posted_successfully? -%}
+          <p class="Alert Alert--success">{{ 'contact.form.successfully_sent' | t }}</p>
+        {%- endif -%}
+      
+        {%- if form.errors -%}
+          <div class="Form__Alert Alert Alert--error">
+            <ul class="Alert__ErrorList">
+              {%- for field in form.errors -%}
+                {%- if field == 'form' -%}
+                  <li class="Alert__ErrorItem">{{ form.errors.messages[field] }}</li>
+                {%- else -%}
+                  <li class="Alert__ErrorItem"><strong>{{ form.errors.translated_fields[field] }}</strong> {{ form.errors.messages[field] }}</li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+
+        会社名
+        <div class="Form__Group">
+          <div class="Form__Item">
+            <input type="text" class="Form__Input" name="contact[name]" aria-label="{{ 'contact.form.name' | t }}"  required {% if customer %}value="{{ customer.name }}"{% endif %}>
+          </div>
+        </div>
+          部署名
+         <div class="Form__Group">
+          <div class="Form__Item">
+            <input type="email" class="Form__Input" name="contact[email]" aria-label="{{ 'contact.form.email' | t }}"  required {% if customer %}value="{{ customer.email }}"{% endif %}>
+          </div>
+         </div>
+        担当者名
+        <div class="Form__Group">
+          <div class="Form__Item">
+            <input type="text" class="Form__Input" name="contact[name]" aria-label="{{ 'contact.form.name' | t }}" placeholder="{{ 'contact.form.name' | t }}" required {% if customer %}value="{{ customer.name }}"{% endif %}>
+            
+          </div>
+        </div>
+          メールアドレス
+          <div class="Form__Group">
+            <div class="Form__Item">
+              <input type="text" class="Form__Input" name="contact[email]" aria-label="{{ 'contact.form.email' | t }}" placeholder="{{ 'contact.form.email' | t }}" required {% if customer %}value="{{ customer.email }}"{% endif %}>
+              
+            </div>
+          </div>
+            電話番号
+            <div class="Form__Group">
+              <div class="Form__Item">
+                <input type="text" class="Form__Input" name="contact[phone]"   required {% if customer %}value="{{ customer.phone}}"{% endif %}>
+                
+              </div>
+            </div>
+          </div>
+
+        {%- for block in section.blocks -%}
+          {%- assign field_title = block.settings.title -%}
+
+          {%- if field_title == blank -%}
+            {%- capture field_title -%}Custom field {% increment custom_field %}{%- endcapture -%}
+          {%- endif -%}
+
+          {%- if block.type == 'text' -%}
+            <div class="Form__Item">
+              {%- if block.settings.use_long_text -%}
+                <textarea name="contact[{{ field_title | escape }}]" cols="30" rows="10" class="Form__Textarea" aria-label="{{ block.settings.title | escape }}" placeholder="{{ block.settings.title | escape }}" {% if block.settings.is_required %}required{% endif %}></textarea>
+                <label class="Form__FloatingLabel">{{ block.settings.title | escape }}</label>
+              {%- else -%}
+                <input type="text" class="Form__Input" name="contact[{{ field_title | escape }}]" aria-label="{{ block.settings.title | escape }}" placeholder="{{ block.settings.title | escape }}" {% if block.settings.is_required %}required{% endif %}>
+                <label class="Form__FloatingLabel">{{ block.settings.title | escape }}</label>
+              {%- endif -%}
+            </div>
+          {%- elsif block.type == 'dropdown' -%}
+            {%- assign values = block.settings.values | split: ',' -%}
+
+            {%- if values == empty -%}
+              {%- continue -%}
+            {%- endif -%}
+
+            <div class="Form__Item">
+              <div class="Form__Select Select Select--primary">
+                {%- render 'icon' with 'select-arrow' -%}
+
+                <select name="contact[{{ field_title | escape }}]" title="{{ block.settings.title | escape }}" required>
+                  <option value="" disabled selected>{{ block.settings.title | escape }}</option>
+
+                  {%- for value in values -%}
+                    {%- assign trim_value = value | strip -%}
+
+                    <option value="{{ trim_value | escape }}">{{ trim_value | escape }}</option>
+                  {%- endfor -%}
+                </select>
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+        <p class="line-item-property__field">
+          <div class="grid__item medium-up--one-half">
+                <label>ご相談内容</label><br>
+                 <select required class="required" id="" name="attributes[ご相談内容]">
+                  <option value="新規のサイト構築について"{% if cart.attributes["ご相談内容"] == "新規のサイト構築について" %} selected{% endif %}>新規のサイト構築について</option>
+                  <option value="既存サイトの編集"{% if cart.attributes["ご相談内容"] == "既存サイトの編集" %} selected{% endif %}>既存サイトの編集</option>
+                  <option value="SNS連携について"{% if cart.attributes["ご相談内容"] == "SNS連携について" %} selected{% endif %}>SNS連携について</option>
+                  <option value="大型モール（楽天やYahoo!）からの移転について"{% if cart.attributes["ご相談内容"] == "大型モール（楽天やYahoo!）からの移転について" %} selected{% endif %}>大型モール（楽天やYahoo!）からの移転について</option>
+                 </select>
+          </div>
+        </p>
+
+        件名
+        <div class="Form__Group">
+          <div class="Form__Item">
+            <input type="re_subject" class="Form__Input" name="contact[re_subject]" aria-label="{{ 'contact.form.re_subject' | t }}"  required {% if customer %}value="{{ customer.re_subject }}"{% endif %}>
+            
+          </div>
+        </div>
+        本文
+        <div class="Form__Item">
+          <textarea name="contact[body]" cols="30" rows="10" class="Form__Textarea" aria-label="{{ 'contact.form.message' | t }}" placeholder="{{ 'contact.form.message' | t }}" required></textarea>
+          <label class="Form__FloatingLabel">{{ 'contact.form.message' | t }}</label>
+        </div>
+
+        <button type="submit" class="Form__Submit Button Button--primary Button--full">{{ 'contact.form.submit' | t }}</button>
+      {%- endform -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Contact page",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Text field",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Name",
+          "default": "Custom field"
+        },
+        {
+          "type": "checkbox",
+          "id": "use_long_text",
+          "label": "Use long text",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "is_required",
+          "label": "Field is required",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "dropdown",
+      "name": "Dropdown",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Name",
+          "default": "Custom field"
+        },
+        {
+          "type": "text",
+          "id": "values",
+          "label": "Values",
+          "info": "Separate each value by a comma.",
+          "default": "value 1, value 2, value 3"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "text",
+        "settings": {
+          "title": "Your phone (optional)"
+        }
+      }
+    ]
+  }
+}
+{% endschema %}

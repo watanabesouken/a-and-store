@@ -1,0 +1,28 @@
+{% liquid
+  assign vendor_products = collections.all.products | where: 'vendor', product.vendor
+%}
+
+{%- for product in vendor_products -%}
+  <figure class="product-thumbnail"><img src="{{ product.featured_image | img_url:'300x' }}"></figure>
+  {{ product.title }}
+  {{ product.vendor }}
+  {{ product.price }}
+{%- endfor -%}
+
+{% schema %}
+  {
+    "name": "関連商品(販売元)",
+    "settings": [],
+    "presets": [
+      {
+        "name": "関連商品(販売元)"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

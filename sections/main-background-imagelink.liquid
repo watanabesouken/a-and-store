@@ -1,0 +1,97 @@
+{%- style -%}
+  .p-top-section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+        margin: 0 auto;
+  }
+
+  @media screen and (min-width: 750px) {
+    .p-top-section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+          margin: 0 auto;
+    }
+  }
+      .p-top-border-{{ section.id }}-radius {
+    border-radius:{{ section.settings.border-radius}}px!important;
+  }
+{%- endstyle -%}
+
+<div class="homeSection latestNews p-top-section-{{ section.id }}-padding">
+  <a  href="{{ section.settings.background-link }}" class="newsLink p-top-border-{{ section.id }}-radius" style="background: url('{{ section.settings.background-image | img_url: 'master' }}') ">
+    <div class="heading is-secondary ten typesquare_option" style="color: #fafafa;">
+       {%- if section.settings.link-text != blank -%}
+      <p class=" typesquare_option" style="color: {{ section.settings.link-text-color }}">{{ section.settings.link-text}}</p>
+      {% endif %}
+    </div>
+  </a>
+</div>
+
+
+{% schema %}
+{
+  "name": "背景画像リンク",
+ "settings": [
+     {
+            "type": "image_picker",
+            "id": "background-image",
+            "label": "画像"
+          },
+   {
+             "id": "background-link",
+             "type": "url",
+             "label": "リンク先"
+  },
+   {
+             "type": "text",
+             "id": "link-text",
+             "label": "リンクテキスト",
+             "default": "More"
+          },
+   {
+            "type": "color",
+            "id": "link-text-color",
+            "label": "リンクテキストカラー",
+            "default": "#fff"
+          } ,
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "余白上",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "余白下",
+      "default": 36
+    },
+     {
+  "type": "range",
+  "id" : "border-radius",
+  "label" : "角丸(画像)",
+  "max": 100,
+  "min": 0,
+  "step": 5,
+  "unit": "px",
+  "default" : 30
+  }
+  ],
+  "blocks": [
+    ],
+  "presets": [
+       {
+       "name": "背景画像リンク",
+       "category": "カスタム"
+       }
+    ]
+}
+{% endschema %}

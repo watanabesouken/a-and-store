@@ -1,0 +1,128 @@
+
+<style>
+ .spaced-section {
+   margin-top:0;
+ }
+ 
+ .malin-slider-{{ section.id }} {
+   animation: logofadeIn 2.5s ease 0s 1 normal;
+   -webkit-animation: logofadeIn 2.5s ease 0s 1 normal;
+ }
+ 
+ @keyframes logofadeIn { 
+       0% {opacity: 0} 
+       100% {opacity: 1} 
+   }
+
+   @-webkit-keyframes logofadeIn {
+       0% {opacity: 0}
+       100% {opacity: 1}
+   }
+ 
+{% for block in section.blocks %}
+ {% assign index = forloop.index %}
+{% endfor %}
+ @-webkit-keyframes scroll {
+ 0% {
+   -webkit-transform: translateX(0);;
+           transform: translateX(0);;
+ }
+ 100% {
+   -webkit-transform: translateX(calc(-250px * {{index}}));
+           transform: translateX(calc(-250px * {{index}}));
+ }
+}
+
+@keyframes scroll {
+ 0% {
+   -webkit-transform: translateX(0);;
+           transform: translateX(0);;
+ }
+ 100% {
+    -webkit-transform: translateX(calc(-250px * {{index}}));
+           transform: translateX(calc(-250px * {{index}}));
+ }
+}
+ 
+ 	
+	.malin-slider-{{ section.id }} .malin-slide-track-{{ section.id }} {
+     display: flex;
+     width: calc(250px * {{index}} * 2);
+		-webkit-animation: scroll 40s linear infinite;
+         animation: scroll 40s linear infinite;      
+
+	}
+
+
+   .malin-slider-{{ section.id }} {
+       background: white;
+       box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125);
+       height: 100px;
+       margin: auto;
+       overflow:hidden;
+       position: relative;
+       width: 100%;
+       display: flex;
+   }
+ 	
+	.malin-slide-{{ section.id }} {
+		height: 100px;
+		width: 250px;
+       
+	}
+ 
+   .malin-slide-{{ section.id }} img {
+		height: 100px;
+		width: 250px;
+       object-fit: cover;
+   }
+
+}
+  </style>
+<div class="malin-slider-{{ section.id }}">
+	<div class="malin-slide-track-{{ section.id }}">
+     {% for block in section.blocks %}
+       <div class="malin-slide-{{ section.id }}">
+			<img src="{{ block.settings.autoslide_img | img_url: 'master'  }}" alt="" loading="lazy"  />
+		</div>
+     {% endfor %}
+     {% for block in section.blocks %}
+       <div class="malin-slide-{{ section.id }}">
+			<img src="{{ block.settings.autoslide_img | img_url: 'master'  }}" alt="" loading="lazy"  />
+		</div>
+     {% endfor %}
+	</div>
+</div>
+
+{% schema %}
+{
+"name": "自動スライドロゴサイズ",
+"blocks": [
+  {
+    "type": "autoslide_logo",
+    "name": "ロゴ",
+    "settings": [
+
+      {
+          "type": "image_picker",
+          "id": "autoslide_img",
+          "label": "ロゴ"
+      }
+      
+    ]
+  }
+],
+"presets": [
+   {
+     "name": "自動スライドロゴサイズ",
+     "blocks": [
+
+       {
+         "type": "autoslide_logo"
+       }
+	   
+     ]
+   }
+ ]
+}
+{% endschema %}

@@ -1,0 +1,240 @@
+{%- style -%}
+ .newsticker {
+    list-style: none;
+}
+
+  .news-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-bottom: dotted 0.1rem #B9B9B9;
+    padding-top: 1.9rem;
+    padding-bottom: 1.8rem;
+    cursor: pointer;
+    padding-left: 1rem;
+    gap: 2%;
+}
+
+  .news__box {
+    max-width: 96.5rem;
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+}
+  .p-news-list__item {
+    font-size: 1.2rem;
+    color: #FFFFFF;
+    background: #C6BD94;
+    width: 12rem;
+    text-align: center;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    max-width: 100%;
+}
+.newsticker li:first-of-type {
+    border-top: dotted 0.1rem #B9B9B9;
+}
+  .malin-newsticker-title {
+    font-size: 35px;
+    margin-bottom: 0;
+}
+    .p-top-section-{{ section.id }}-padding2 {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-left: {{ section.settings.padding_left | times: 0.75 | round: 0 }}px;
+    padding-right: {{ section.settings.padding_right | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .p-top-section-{{ section.id }}-padding2 {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      padding-left: {{ section.settings.padding_left}}px;
+      padding-right: {{ section.settings.padding_right}}px;
+    }
+  }
+  
+{%- endstyle -%}
+
+  {%- assign blog = blogs[section.settings.blog] -%}
+
+ <div class="news__box p-top-section-{{ section.id }}-padding2" style="background-color: {{ section.settings.box_bkColor}}">
+ {% if section.settings.title != blank %}
+     <h2 class="malin-newsticker-title" style="font-size: {{ section.settings.font_size-heading}}px ">{{ section.settings.title | escape }}</h2>
+ {% endif %}
+
+ {% unless blog.articles_count == 0 %}
+ <div class="small--hide">
+   <ul class="newsticker">
+     {% for article in blog.articles %}
+      
+         <li class="newsticker-list">
+           {% unless section.settings.post_limit == 0 %}
+
+             <a href="{{ article.url }}" class="newsticker-textlink news-list">
+               <span class="newsticker-date"  style="font-size: {{ section.settings.news-date-fontsize}}px"><time pubdate datetime="{{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' }}">{{ article.published_at | date: format: 'date' }}</time></span>
+                {%- if section.settings.tag != blank -%}
+                 <p class="p-feature__tag p-news-list__item"  style="font-size: {{ section.settings.news-tag-fontsize}}px">
+                        {% for tag in article.tags %}
+						    {{ tag }}
+						{% endfor %}
+                 </p>
+                      {%- endif -%}
+                <p class="p-article-title"  style="font-size: {{ section.settings.news-title-fontsize}}px"> {{ article.title | truncate: 50 }}</p>
+             </a>
+
+           {% endunless %}
+
+         </li>
+  
+
+     {% endfor %}
+   </ul>
+ </div>
+ 
+ {% else %}
+   {% include 'onboarding-featured-blog' %}
+ {% endunless %}
+
+   
+</div>
+{% schema %}
+{
+ "name":"ニュースティッカー",
+ "settings": [
+      {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "余白上",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "余白下",
+      "default": 36
+    },
+        {
+      "type": "range",
+      "id": "padding_left",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "余白左",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "余白右",
+      "default": 36
+    },
+   {
+     "type": "text",
+     "id": "title",
+     "label": "見出し"
+   },
+   {
+  "type": "range",
+  "id": "font_size-heading",
+  "min": 12,
+  "max": 80,
+  "step": 1,
+  "unit": "px",
+  "label": "フォントサイズ(ニュース見出し)",
+  "default": 16
+},
+    {
+  "type": "range",
+  "id": "news-date-fontsize",
+  "min": 12,
+  "max": 60,
+  "step": 1,
+  "unit": "px",
+  "label": "フォントサイズ(ニュース日付)",
+  "default": 16
+},
+    {
+  "type": "range",
+  "id": "news-tag-fontsize",
+  "min": 12,
+  "max": 60,
+  "step": 1,
+  "unit": "px",
+  "label": "フォントサイズ(ニュースタグ)",
+  "default": 16
+},
+   {
+  "type": "range",
+  "id": "news-title-fontsize",
+  "min": 12,
+  "max": 60,
+  "step": 1,
+  "unit": "px",
+  "label": "フォントサイズ(ニュースタイトル)",
+  "default": 16
+},
+   {
+     "id": "blog",
+     "type": "blog",
+     "label": "ブログ"
+   },
+     {
+       "type": "color",
+       "id": "box_bkColor",
+       "label": "背景カラー",
+       "default": "#fff"
+     }
+
+ ],
+ "presets": [
+   {
+     "name": "ニュースティッカー",
+     "category": "ブログ",
+     "settings": {
+       "blog": "News"
+     }
+   }
+ ]}
+{% endschema %}
+<!-- 
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
+<script>
+ 
+var slider;
+var sliderFlag = false;
+ 
+function sliderSet() {
+       var windowWidth = window.innerWidth;
+       $('.newsticker').bxSlider({
+         touchEnabled:false,
+         mode: 'vertical',
+         controls: false,
+         auto: 'true',
+         pager: false
+         });
+   }
+
+$(window).on('load resize', function() {
+       sliderSet();
+});
+ 
+
+</script> -->

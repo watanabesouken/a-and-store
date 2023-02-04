@@ -1,0 +1,94 @@
+
+{%- style -%}
+  .section-{{ section.id }}-padding{
+    padding-top: {{ section.settings.sp_margin_top }}px;
+    padding-bottom: {{ section.settings.sp_margin_bottom }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.margin_top }}px;
+      padding-bottom: {{ section.settings.margin_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+
+<section class="p-policy">
+
+  <div class="p-policy-wrapper">
+          <div class="p-head-border">
+                <h2>Term & Conditions</h2>
+                <span>特定商取引に基づく表示</span>
+            </div>
+            <div class="p-policy-contents section-{{ section.id }}-padding">
+              <p>{{ section.settings.policy-contents | newline_to_br }}</p>
+            </div>
+  </div>
+
+</section>
+
+{% schema %}
+{
+    "name":"特定商取引に基づく表示",
+    "tag": "section",
+    "settings":[
+        {
+            "type": "textarea",
+            "id": "policy-contents",
+            "default": "FLIP BOX FAMILY",
+            "label": "ポリシーコンテンツ"
+        },
+        {
+            "type": "header",
+            "content": "余白の設定"
+        },
+        {
+            "type": "range",
+            "id": "margin_top",
+            "min": 0,
+            "max": 400,
+            "step": 4,
+            "unit": "px",
+            "label": "PCサイズ:上部の余白",
+            "default": 36
+        },
+        {
+            "type": "range",
+            "id": "margin_bottom",
+            "min": 0,
+            "max": 400,
+            "step": 4,
+            "unit": "px",
+            "label": "PCサイズ:下部の余白",
+            "default": 36
+        },
+        {
+            "type": "range",
+            "id": "sp_margin_top",
+            "min": 0,
+            "max": 300,
+            "step": 4,
+            "unit": "px",
+            "label": "スマホサイズ：上部の余白",
+            "default": 36
+        },
+        {
+            "type": "range",
+            "id": "sp_margin_bottom",
+            "min": 0,
+            "max": 300,
+            "step": 4,
+            "unit": "px",
+            "label": "スマホサイズ：下部の余白",
+            "default": 36
+        }
+    ],
+    "presets": [
+        {
+			"name": "特定商取引に基づく表示"
+	    }
+    ]
+}
+
+{% endschema %}

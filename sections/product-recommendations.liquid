@@ -1,0 +1,177 @@
+{%- assign use_recommendations = true -%}
+{%- assign hand_picked_count = 0 -%}
+
+{%- for block in section.blocks -%}
+  {%- if block.settings.product != blank -%}
+    {%- assign use_recommendations = false -%}
+    {%- assign hand_picked_count = hand_picked_count | plus: 1 -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- capture section_settings -%}
+{
+  "productId": {{ product.id | json }},
+  "useRecommendations": {{ use_recommendations | json }},
+  "recommendationsCount": 9
+}
+{%- endcapture -%}
+
+{%- capture flickity_options -%}
+{
+  "prevNextButtons": true,
+  "pageDots": false,
+  "wrapAround": false,
+  "contain": true,
+  "cellAlign": "center",
+  "watchCSS": true,
+  "dragThreshold": 8,
+  "groupCells": true,
+  "arrowShape": {"x0": 20, "x1": 60, "y1": 40, "x2": 60, "y2": 35, "x3": 25}
+}
+{%- endcapture -%}
+
+<section class="custom-ProductRecommendations Section--spacingNormal" data-section-id="{{ section.id }}" data-section-type="product-recommendations" data-section-settings='{{ section_settings }}'>
+  {%- if section.settings.heading != blank -%}
+    <header class="custom-ProductSectionHeader SectionHeader SectionHeader--center">
+      <div class="custom-ProductContainer Container">
+        <h3 class="custom-ProductRecommendations__Heading SectionHeader__Heading Heading u-h3">{{ section.settings.heading | escape }}</h3>
+      </div>
+    </header>
+  {%- endif -%}
+
+  <div class="ProductRecommendations">
+    {%- if hand_picked_count > 0 or recommendations.performed and recommendations.products.size > 0 -%}
+      <div class="ProductListWrapper">
+        {%- assign item_count = section.settings.grid_items_count -%}
+
+        {%- if collection.products_count < section.settings.grid_items_count -%}
+          {%- assign item_count = collection.products_count -%}
+        {%- endif -%}
+
+        <div class="ProductList ProductList--grid ProductList--removeMargin Grid" data-flickity-config='{{ flickity_options }}' data-mobile-count="{{ section.settings.grid_mobile_items_per_row }}" data-desktop-count="{{ section.settings.grid_desktop_items_per_row }}">
+          {%- if hand_picked_count > 0 -%}
+            {%- for block in section.blocks -%}
+              {%- assign product = block.settings.product -%}
+
+              {%- if product != blank -%}
+                <div class="custom-Grid-margin Grid__Cell 1/{{ section.settings.grid_mobile_items_per_row }}--phone 1/2--tablet 1/{{ section.settings.grid_desktop_items_per_row }}--lap-and-up">
+                  {% render 'product-item', product: product, show_product_info: section.settings.show_product_info, show_vendor: section.settings.show_vendor, show_color_swatch: section.settings.show_color_swatch, show_labels: true %}
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          {%- else -%}
+            {%- for product in recommendations.products limit: section.settings.grid_items_count -%}
+              <div class="custom-Grid-margin Grid__Cell 1/{{ section.settings.grid_mobile_items_per_row }}--phone 1/2--tablet 1/{{ section.settings.grid_desktop_items_per_row }}--lap-and-up">
+                {% render 'product-item', product: product, show_product_info: section.settings.show_product_info, show_vendor: section.settings.show_vendor, show_color_swatch: section.settings.show_color_swatch, show_labels: true %}
+              </div>
+            {%- endfor -%}
+          {%- endif -%}
+        </div>
+      </div>
+    {%- else -%}
+      {%- comment -%}Hide the section if there is no recommendations to show{%- endcomment -%}
+      <style>
+        #shopify-section-{{ section.id }} {
+          display: none;
+        }
+      </style>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product recommendations",
+  "class": "shopify-section--bordered",
+  "templates": ["product"],
+  "max_blocks": 10,
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Dynamic recommendations are not shown if products are explicitly selected."
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "You may also like"
+    },
+    {
+      "type": "range",
+      "id": "grid_items_count",
+      "min": 2,
+      "max": 50,
+      "step": 1,
+      "label": "Products to show",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Grid",
+      "info": "Those settings apply only if the layout mode is set to grid."
+    },
+    {
+      "type": "select",
+      "id": "grid_mobile_items_per_row",
+      "label": "Products per row (mobile)",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "range",
+      "min": 2,
+      "max": 4,
+      "id": "grid_desktop_items_per_row",
+      "label": "Products per row (desktop)",
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "show_product_info",
+      "label": "Show product info",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Show vendor",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_color_swatch",
+      "label": "Show color swatch",
+      "info": "Some colors appear white? [Learn more](http://support.maestrooo.com/article/80-product-uploading-custom-color-for-color-swatch).",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "category": "Product",
+      "name": "Product recommendations"
+    }
+  ]
+}
+{% endschema %}
